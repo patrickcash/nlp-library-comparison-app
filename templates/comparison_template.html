@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h2> 
+            {% block title %}
+            
+            {% endblock %}
+        </h2> 
+	</div>
+</div>
+
+<div class="container text-center">
+    <p>
+        {% block text %}
+        
+        {% endblock %}
+        </p>
+</div>
+
+
+<div id="text-input" class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            {% block text-input-form %}
+        
+            {% endblock %}
+        </div>
+    </div>
+	
+</div>
+
+<div id="comparison-output" class="container">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-6">
+                {% block library-1-output %}
+            
+                {% endblock %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-6">
+                {% block library-2-output %}
+            
+                {% endblock %}
+            </div>
+        </div>        
+      </div>
+</div>
+
+{% endblock %}
