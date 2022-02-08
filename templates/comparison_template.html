@@ -24,9 +24,11 @@
 <div id="text-input" class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            {% block text-input-form %}
-        
-            {% endblock %}
+            <form method="POST" id="text-input-form">
+		        <label >Enter Text To Be Analyzed</label>
+                <textarea class="form-control" rows="3" cols="2" name="rawtext"></textarea>
+                <input type="submit" onclick="myAnalyser()" value="Analyse" class="btn btn-primary">            
+            </form>
         </div>
     </div>
 	
