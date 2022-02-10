@@ -1,13 +1,63 @@
 {% extends "comparison_template.html" %}
+
 {% block title %}
 Named Entity Recognition
 {% endblock %}
+
 {% block description %}
 {% include "fragments/_named_entity_description.html" %}
 {% endblock %}
+
 {% block library_1 %}
 <h5>TextBlob</h5>
+<P>
+    Textblob is an easy to use library but it provides limited functionality. Textblob's named entity recognition comes in the form of doing part of speach tagging and identifying "noun phrases"
+</P>
+{% if textblob_output is defined %}   
+<p>
+    Analysis completed in {{ textblob_output["total_time"] }}
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Entity</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ent in textblob_output["ner"] %}
+        <tr>
+            <td>{{ ent }}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}
+
 {% block library_2 %}
 <h5>SpaCy</h5>
+<p>
+    SpaCy is a more sophiticated library and provided dedicated named entity recogition functionality and allows uers to augment the default functionality. Its NER functionality tries to both identify named entities and classify them into one of several categories.
+</p>
+{% if spacy_output is defined %}
+<p>
+    Analysis completed in {{ spacy_output["total_time"] }}
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Entity</th>
+        <th scope="col">Label</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ent in spacy_output["ner"] %}
+        <tr>
+            <td>{{ ent.text }}</td>
+            <td>{{ ent.label_ }}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}

@@ -6,8 +6,30 @@ Text Summarization
 {% include "fragments/_summarization_description.html" %}
 {% endblock %}
 {% block library_1 %}
-<h5>SpaCy</h5>            
+<h5>SpaCy</h5>
+<p>
+    Both of the summarization approaches compared use a general approach to rank sentences based on the significance of the words in teh sentence and then use the top N sentences as a summary. In this case spacy is used mostly to clean the text and remove stopwords.
+</p>
+{% if spacy_output is defined %}
+<p>
+    Analysis completed in {{ spacy_output["total_time"] }}
+</p>
+<p>
+    {{ spacy_output["summary"] }}
+</p>
+{% endif %}
 {% endblock %}
 {% block library_2 %}
-<h5>Gensim</h5>       
+<h5>Sumy</h5>
+<p>
+    Sumy is a summarizaation specific NLP library, It provides implementations of several approaches to text summarization. This comparison uses the LexRank approach to summarization that is closest to the appraoch used with the SpaCy summarization.
+</p>
+{% if sumy_output is defined %}
+<p>
+    Analysis completed in {{ sumy_output["total_time"] }}
+</p>
+<p>
+    {{ sumy_output["summary"] }}
+</p>
+{% endif %}
 {% endblock %}

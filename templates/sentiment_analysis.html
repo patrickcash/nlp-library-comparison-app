@@ -1,13 +1,71 @@
 {% extends "comparison_template.html" %}
+
 {% block title %}
 Sentiment Analysis
 {% endblock %}
+
 {% block description %}
 {% include "fragments/_sentiment_analysis_description.html" %}
 {% endblock %}
+
 {% block library_1 %}
-<h5>TextBlob</h5>     
+<h5>TextBlob</h5>  
+<p>
+    Textblob provied basic polarity and subjectivity scores. 
+</p>
+<p>
+    Polarity ranges between -1.0 and 1.0 with positive scores indicating positive sentiemnt and negative scores indicating negative sentiment. The subjectivity score ranges from 0.0 for very objective to 1.0 for very subjective.
+</p> 
+{% if textblob_output is defined %}  
+<p>
+    Analysis completed in {{ textblob_output["total_time"] }}
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Polarity</th>
+        <th scope="col">Subjectivity</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ textblob_output["sentiment"].polarity }}</td>
+            <td>{{ textblob_output["sentiment"].subjectivity }}</td>
+          </tr>
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}
+
 {% block library_2 %}
 <h5>VADER</h5>
+<p>
+    VADER (Valence Aware Dictionary and sEntiment Reasoner) is a library built for sentiment analysis and specifically social media text. 
+</p>
+<p>
+    Below the compound score roughly corresponds the textblob's polarity with values ranging from 0.0 to 1.0, values greater the 0.5 being positive sentiment and less than 0.5 being negative sentiment. The pos, neu, and neg scores are ratios for proportions of text that fall in each category.
+</p>
+{% if vader_output is defined %}  
+<p>
+    Analysis completed in {{ vader_output["total_time"] }}
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Compound</th>
+        <th scope="col">Positive</th>
+        <th scope="col">Neutral</th>
+        <th scope="col">Negative</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ vader_output["sentiment"].compound }}</td>
+            <td>{{ vader_output["sentiment"].pos }}</td>
+            <td>{{ vader_output["sentiment"].neu }}</td>
+            <td>{{ vader_output["sentiment"].neg }}</td>
+          </tr>
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}

@@ -17,13 +17,13 @@
 {% endblock %}
 
 
-<div id="text-input" class="container mt-5">
+<div id="text-input" class="container mt-5 vh-50">
     <div class="row justify-content-center">
         <div class="col-6">
             <form method="POST" id="text-input-form">
 		        <label >Enter Text To Be Analyzed</label>
-                <textarea class="form-control" rows="3" cols="2" name="input-text"></textarea>
-                <input type="submit" onclick="myAnalyser()" value="Analyse" class="btn btn-primary">            
+                <textarea class="form-control" rows="10" cols="3" id="input_text" name="input_text" >{{ request.form["input_text"] }}</textarea>
+                <input type="submit" value="Analyse" class="btn btn-primary">            
             </form>
         </div>
     </div>
@@ -31,13 +31,13 @@
 </div>
 
 <div id="comparison-output" class="container mt-5">
-    <div class="row">
-        <div class="col col-md-6">
+    <div class="row d-flex justify-content-between">
+        <div class="card col col-md-5">
             {% block library_1 %}
         
             {% endblock %}
         </div>
-        <div class="col col-md-6">
+        <div class="card col col-md-5">
             {% block library_2 %}
         
             {% endblock %}
