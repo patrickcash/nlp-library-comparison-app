@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container mt-5">
 	<div class="jumbotron text-center">
 		<h2> 
             {% block title %}
@@ -12,16 +12,12 @@
 	</div>
 </div>
 
-<div class="container text-center">
-    <p>
-        {% block text %}
+{% block description %}
         
-        {% endblock %}
-        </p>
-</div>
+{% endblock %}
 
 
-<div id="text-input" class="container">
+<div id="text-input" class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-6">
             <form method="POST" id="text-input-form">
@@ -34,21 +30,17 @@
 	
 </div>
 
-<div id="comparison-output" class="container">
+<div id="comparison-output" class="container mt-5">
     <div class="row">
-        <div class="container">
-            <div class="col-md-6">
-                {% block library-1-output %}
-            
-                {% endblock %}
-            </div>
+        <div class="col col-md-6">
+            {% block library_1 %}
+        
+            {% endblock %}
         </div>
-        <div class="container">
-            <div class="col-md-6">
-                {% block library-2-output %}
-            
-                {% endblock %}
-            </div>
+        <div class="col col-md-6">
+            {% block library_2 %}
+        
+            {% endblock %}
         </div>        
       </div>
 </div>

@@ -1,13 +1,13 @@
-{% extends "comparison_tempate.html" %}
+{% extends "comparison_template.html" %}
 {% block title %}
 Sentiment Analysis
 {% endblock %}
-{% block text %}
-
+{% block description %}
+{% include "fragments/_sentiment_analysis_description.html" %}
 {% endblock %}
-{% block library-1-output %}
-<h3>TextBlob Sentiment Analysis</h3>     
+{% block library_1 %}
+<h5>TextBlob</h5>     
 {% endblock %}
-{% block library-2-output %}
-<h3>VADER Sentiment Analysis</h3>
+{% block library_2 %}
+<h5>VADER</h5>
 {% endblock %}

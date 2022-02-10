@@ -1,13 +1,13 @@
-{% extends "comparison_tempate.html" %}
+{% extends "comparison_template.html" %}
 {% block title %}
 Named Entity Recognition
 {% endblock %}
-{% block text %}
-
+{% block description %}
+{% include "fragments/_named_entity_description.html" %}
 {% endblock %}
-{% block library-1-output %}
-<h3>TextBlob Named Entity Recognition</h3>>
+{% block library_1 %}
+<h5>TextBlob</h5>
 {% endblock %}
-{% block library-2-output %}
-<h3>SpaCy Named Entity Recognition</h3>
+{% block library_2 %}
+<h5>SpaCy</h5>
 {% endblock %}

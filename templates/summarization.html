@@ -1,14 +1,13 @@
-{% extends "comparison_tempate.html" %}
+{% extends "comparison_template.html" %}
 {% block title %}
 Text Summarization
 {% endblock %}
-{% block text %}
-
+{% block description %}
+{% include "fragments/_summarization_description.html" %}
 {% endblock %}
-{% block library-1-output %}
-<h3>SpaCy Summarization</h3>
-            
+{% block library_1 %}
+<h5>SpaCy</h5>            
 {% endblock %}
-{% block library-2-output %}
-<h3>Gensim Sumarization</h3>       
+{% block library_2 %}
+<h5>Gensim</h5>       
 {% endblock %}

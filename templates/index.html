@@ -1,4 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>NLP Library Comparison</h1>
+<div class="container mt-5">
+    <div class="row">
+        <h3>Library Features Compared:</h3>
+    </div>
+    <div class="row mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Named Entity Recognition</h5>
+                {% include "fragments/_named_entity_description.html" %}      
+                <a href="/named-entity-recognition" class="btn btn-primary">Compare Libraries</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sentiment Analysis</h5>
+                {% include "fragments/_sentiment_analysis_description.html" %}
+                <a href="/sentiment-analysis" class="btn btn-primary">Compare Libraries</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Summarization</h5>
+                {% include "fragments/_summarization_description.html" %}
+                <a href="/summarization" class="btn btn-primary">Compare Libraries</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

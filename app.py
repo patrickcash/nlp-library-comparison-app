@@ -1,5 +1,10 @@
-import time
 from flask import Flask, render_template, request
+
+
+from nlp_analysis.named_entity_recognition import textblob_ner, spacy_ner
+from nlp_analysis.sentiment_analysis import textblob_sentiment_analysis, vader_sentiment_analysis
+from nlp_analysis.summarization import spacy_summarization, gensim_summarization
+
 
 app = Flask(__name__)
 
@@ -14,19 +19,10 @@ def named_entiry_recognition():
     if request.method == 'POST':
        input_text = request.form['input-text']
         
-       # Library 1 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
-        
-       library_1_output = {total_time}
-        
-       # Library 2 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
-        
-       library_2_output = {total_time}
+       textblob_output = textblob_ner(input_text)
+       spacy_ouput = spacy_ner(input_text)
        
-       return render_template('named_entity.html', library_1_output, library_2_output)
+       return render_template('named_entity.html', textblob_output, spacy_ouput)
     else:
        return render_template('named_entity.html')
 
@@ -36,19 +32,10 @@ def sentiment_analysis():
     if request.method == 'POST':
        input_text = request.form['input-text']
         
-       # Library 1 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
+       textblob_output = textblob_sentiment_analysis(input_text)
+       vader_output = vader_sentiment_analysis(input_text)
 
-       library_1_output = {total_time}
-
-       # Library 2 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
-
-       library_2_output = {total_time}
-
-       return render_template('sentiment_analysis.html', library_1_output, library_2_output)
+       return render_template('sentiment_analysis.html', textblob_output, vader_output)
     else:
        return render_template('sentiment_analysis.html')
 
@@ -58,19 +45,10 @@ def summarization():
     if request.method == 'POST':
        input_text = request.form['input-text']
         
-       # Library 1 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
+       spacy_output = spacy_summarization(input_text)
+       gensim_output = gensim_summarization(input_text)
 
-       library_1_output = {total_time}
-
-       # Library 2 analysis
-       start_time = time.time()
-       total_time = time.time() - start_time
-
-       library_2_output = {total_time}
-
-       return render_template('summarization.html', library_1_output, library_2_output)
+       return render_template('summarization.html', spacy_output, gensim_output)
     else:
        return render_template('summarization.html')
 
