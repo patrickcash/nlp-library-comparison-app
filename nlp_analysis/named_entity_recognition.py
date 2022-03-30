@@ -2,7 +2,11 @@ import time
 
 from textblob import TextBlob
 import spacy 
-nlp = spacy.load('en_core_web_sm')
+try:
+    nlp = spacy.load("en_core_web_sm")
+except: # If not present, download
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 def textblob_ner(input_text):
     textblob_output = {}

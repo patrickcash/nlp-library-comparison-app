@@ -2,7 +2,11 @@ import time
 from heapq import nlargest
 
 import spacy 
-nlp = spacy.load('en_core_web_sm')
+try:
+    nlp = spacy.load("en_core_web_sm")
+except: # If not present, download
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 
